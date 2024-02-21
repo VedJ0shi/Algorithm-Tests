@@ -8,11 +8,11 @@ A = [1, 2, 3, 4] #list is a mutable object in memory
 B = A #B is an alias of A
 print(B, A)
 B.append(5) #will modify A too, since both A and B reference the same list
-A[0] = -1
+A[0] = -1 #will modify B too
 print("after modification:", B, A)
 print()
 
-C = copy.copy(B) #C is a shallow copy of B and A, C references a distinct list
+C = copy.copy(B) #C is a shallow copy of B and A; C references a distinct list
 print(C, B, A)
 C.append(6)
 C[0] = 1
