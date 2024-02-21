@@ -19,7 +19,7 @@ class Progression: #a general iterator class for mathematical progressions
 
 
 
-class ArithProgression(Progression): #subclass that represents arithmetic progressions
+class ArithProgression(Progression): #subclass for arithmetic progressions
 
     def __init__(self, incr, start=0):
         super().__init__(start)
@@ -28,3 +28,15 @@ class ArithProgression(Progression): #subclass that represents arithmetic progre
     def _advance(self):
         '''overrides inherited method'''
         self._current = self._current + self._incr
+
+
+class FibProgression(Progression): #subclass for Fibonacci progressions
+
+    def __init__(self):
+        super().__init__(1)
+        self._prev = 0
+        
+    def _advance(self):
+        '''overrides inherited method'''
+        self._current, self._prev = (self._current + self._prev), self._current
+
