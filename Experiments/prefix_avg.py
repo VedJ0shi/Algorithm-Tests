@@ -1,4 +1,4 @@
-#O(n^2) 'Prefix Averages producing' algorithm
+#naive O(n^2) 'Prefix Averages producing' algorithm
 import time
 from matplotlib import pyplot
 
