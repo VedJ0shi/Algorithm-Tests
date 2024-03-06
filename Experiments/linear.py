@@ -9,7 +9,7 @@ def find_max(seq): #expects a list of floats/ints
             max = x
     return max
 
-#worst case runtimes with lists in increasing order:
+#runtimes for lists in increasing order:
 runtimes = []
 foo = []
 for i in range(5000):

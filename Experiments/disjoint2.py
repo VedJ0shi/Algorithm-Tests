@@ -1,11 +1,11 @@
 #better O(n^2) algorithm that determines disjointness of 3 sets
 
-def is_disjoint(A,B,C):
+def is_disjoint(A, B, C):
     for a in A:
         for b in B:
-            if a==b:
+            if b==a:
                 for c in C:
-                    if b==c:
+                    if c==b:
                         return False
     return True
 

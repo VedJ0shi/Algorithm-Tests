@@ -17,7 +17,7 @@ def prefix_avgs(seq): #len(seq) = n
 1 list update => O(1)
 '''
 
-'''this algo dynamically stores sum instead of recalculating it
+'''dynamically stores sum instead of recalculating it
 with each iteration of the loop, avoiding quadratic behavior'''
 
 runtimes = []
