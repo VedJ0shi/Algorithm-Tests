@@ -22,3 +22,5 @@ def binary_search(seq, target, low=0, high=-1): #expects seq to be sorted
             return binary_search(seq, target, mid+1, high )
 
 
+'''since within in each recursive call, at most one new recursive call can be made
+(due to if/elif/else), this is a linear recursive algorithm '''
