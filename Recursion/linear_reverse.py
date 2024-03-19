@@ -8,5 +8,7 @@ def lin_reverse(seq):
     print(vars())
     return ([seq[last]] + lin_reverse(seq[:last]) )
 
+'''runtime is NOT O(n) since each list slicing (seq[:last]) operation take O(n) time'''
+
 
 
