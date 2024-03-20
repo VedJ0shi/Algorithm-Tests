@@ -1,7 +1,7 @@
 #C4-11
 
 def is_unique(seq, instances={}):
-    '''determines if all elements in a sequence are unique using dictionary'''
+    '''determines if all elements in a sequence are unique using a dictionary'''
     instances[seq[0]] = instances.get(seq[0],0) +1 #.get() returns 0 if given key does not yet exist
     print(vars())
     if instances[seq[0]] > 1:
