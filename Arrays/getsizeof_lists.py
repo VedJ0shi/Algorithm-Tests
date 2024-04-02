@@ -4,14 +4,14 @@ import sys
 '''lists are saved as dynamic reference arrays'''
 
 print('sys.getsizeof([]):', sys.getsizeof([]))
-size = sys.getsizeof([])
 print()
 
 data = []
-for i in range(20):
+size = sys.getsizeof(data)
+for i in range(25):
     data.append(None) #append the None type obj
-    print(data)
-    print(f'id(data[{i}]):', id(data[i])) #references the same object in memory (None)
+    print('data:', data)
+    print(f'id(data[{i}]):', id(data[i])) #references the same object in memory (None obj)
     print('sys.getsizeof(data):', sys.getsizeof(data))
     if sys.getsizeof(data) > size:
         print(f'New array dynamically created with {sys.getsizeof(data)-size} bytes more reserved capacity!')
@@ -19,4 +19,4 @@ for i in range(20):
     print()
 
 '''on 64-bit machine, each memory address is 8 bytes/64 bits-- 
-which becomes the fixed cell size of a reference array'''
+thus, reference array on this machine has 8 byte cells'''
