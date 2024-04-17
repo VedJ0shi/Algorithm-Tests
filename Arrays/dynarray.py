@@ -31,7 +31,7 @@ class DynamicArray:
         self._capacity = new
 
     def _make_array(self, c):
-        return (c * ctypes.py_object)() #returns a py_object_Array type
+        return (c * ctypes.py_object)() #returns a py_object_Array type with c cells
     
    
     def __repr__(self):
