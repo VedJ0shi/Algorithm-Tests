@@ -1,12 +1,5 @@
 #adapting existing list class for the behavior of a LIFO Stack data struc
 
-'''
-Stacks should not formally implement indices, __getitem__() & __setitem__(),
- instead implement:
-- top() to read from the next element on the stack
-- push() to place an element on the stack
-- pop() to return and remove next element on the stack 
-'''
 class Empty(Exception):
     '''raised when accessing element from empty stack'''
     pass
@@ -15,7 +8,7 @@ class ArrayStack:
     '''LIFO Stack implementation using list (dynamic reference array) as underlying storage'''
 
     def __init__(self):
-        self._data = [] #nonpublic list instance
+        self._data = [] #nonpublic list instance; data storage
     
     def __len__(self):
         return len(self._data)
@@ -38,8 +31,15 @@ class ArrayStack:
     
     def __str__(self):
         try:
-            last = self.top()
+            self.top()
+            return f'<Stack({[str(self._data[i]) for i in range(len(self._data))]})>'
         except Empty:
-            last = None
-        return f'<Stack(Last element:{str(last)}, Length:{len(self)})>'
+            return f'<Stack()>'
 
+    '''
+    Stacks should not formally implement indices, __getitem__() & __setitem__(),
+    instead implement:
+    - top() to read from the next element on the stack
+    - push() to place an element on the stack
+    - pop() to return and remove next element on the stack 
+    '''

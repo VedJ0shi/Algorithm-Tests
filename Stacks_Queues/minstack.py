@@ -3,18 +3,18 @@
 from arraystack import Empty, ArrayStack
 
 class MinStack(ArrayStack):
-    '''LIFO Stack with getMin() method; manages two lists behind the scenes'''
+    '''LIFO Stack for ints/floats with getMin() method; manages two lists behind the scenes'''
 
     def __init__(self):
         super().__init__()
-        self._auxillary = [] #stores minimum values in the order they were pushed
+        self._auxillary = [] #tracks minimum values in the order they were pushed
     
     def push(self, obj):
-        current_min = self._auxillary[-1]
         super().push(obj)
         if not self._auxillary:
             self._auxillary.append(obj)
         else:
+            current_min = self._auxillary[-1]
             self._auxillary.append(min(current_min, obj))
     
     def pop(self):
