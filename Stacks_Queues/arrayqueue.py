@@ -13,13 +13,6 @@ class ArrayQueue:
         self._front = 0 #index within _data of the first element in queue
         self._tail = 0 #index within _data of the back of the queue-- next vacant index
     
-    @classmethod
-    def raise_capacity(cls):
-        print(f'current initial capacity: {cls.init_capacity}' )
-        k = int(input('raise initial capacity for all instances by: '))
-        cls.init_capacity = cls.init_capacity + k
-        print('implemented')
-    
     def __len__(self):
         return self._size
     
@@ -32,15 +25,15 @@ class ArrayQueue:
         return self._data[self._front]
     
     def dequeue(self):
-        '''remove and return front element of queue (FIFO)'''
+        '''remove and return first element of queue (FIFO)'''
         if self.is_empty():
             raise Empty('Queue is empty')
         first = self._data[self._front]
         self._data[self._front] = None #rewrite it to None for garbage collection; system will reclaim memory location of the dequeued obj
         self._front = (self._front + 1)%(len(self._data)) #circularity
         self._size = self._size - 1
-        if self._size < len(self._data)//4:
-            self._resize(2*self._size) #assures proportionality between number of queued elements and size of _data
+        if self._size < len(self._data)//4: 
+            self._resize(len(self._data)//2) #assures proportionality between number of queued elements and length of _data
         return first
     
     def enqueue(self, obj):
@@ -70,3 +63,14 @@ class ArrayQueue:
             return f'<Queue({[str(self._data[i]) for i in range(len(self._data))]})>'
         except Empty:
             return f'<Queue()>'
+        
+    #define some aliases for main methods:
+    get = dequeue
+    put = enqueue
+
+    @classmethod
+    def raise_capacity(cls):
+        print(f'current initial capacity: {cls.init_capacity}' )
+        k = int(input('raise initial capacity for all instances by: '))
+        cls.init_capacity = cls.init_capacity + k
+        print('implemented')

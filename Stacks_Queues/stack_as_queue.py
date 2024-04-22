@@ -1,4 +1,4 @@
-#implementing Stack using a Queue data structure for underlying storage
+#adapting Queue class for behavior of Stack data struc
 #all public methods are Stack methods
 from arrayqueue import *
 
