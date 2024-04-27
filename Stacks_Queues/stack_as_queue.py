@@ -27,7 +27,7 @@ class QStack:
             first = self._data.dequeue()
             self._data.enqueue(first)
             j = j + 1
-        if j == 1:
+        if j == 1: #if len(self._data) = 1
             self._top = None
         else:
             self._top = first

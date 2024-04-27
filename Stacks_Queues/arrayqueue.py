@@ -11,7 +11,7 @@ class ArrayQueue:
         self._data = [None]*ArrayQueue.init_capacity #reserves exact amount of memory in array; data storage
         self._size = 0 #actual number of queued elements, as opposed to len of _data
         self._front = 0 #index within _data of the first element in queue
-        self._tail = 0 #index within _data of the back of the queue-- next vacant index
+        self._tail = 0 #index within _data of the back of the queue-- next vacant position
     
     def __len__(self):
         return self._size
@@ -33,7 +33,7 @@ class ArrayQueue:
         self._front = (self._front + 1)%(len(self._data)) #circularity
         self._size = self._size - 1
         if self._size < len(self._data)//4: 
-            self._resize(len(self._data)//2) #assures proportionality between number of queued elements and length of _data
+            self._resize(len(self._data)//2) #assures proportionality between number of queued elements and length of _data (memory usage)
         return first
     
     def enqueue(self, obj):
@@ -64,7 +64,7 @@ class ArrayQueue:
         except Empty:
             return f'<Queue()>'
         
-    #define some aliases for main methods:
+    #define some aliases for main public methods:
     get = dequeue
     put = enqueue
 

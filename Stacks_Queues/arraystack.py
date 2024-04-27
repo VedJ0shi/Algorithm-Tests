@@ -17,7 +17,7 @@ class ArrayStack:
         return len(self._data) == 0
     
     def push(self, obj):
-        self._data.append(obj) #rightmost element is the last element of stack
+        self._data.append(obj) #rightmost element is the last/top element of stack
 
     def pop(self):
         if self.is_empty():
