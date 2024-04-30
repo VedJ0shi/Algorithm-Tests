@@ -34,7 +34,7 @@ class ArrayStack:
             self.top()
             return f'<Stack({[str(self._data[i]) for i in range(len(self._data))]})>'
         except Empty:
-            return f'<Stack()>'
+            return '<Stack()>'
 
     '''
     Stacks should not formally implement indices, __getitem__() & __setitem__(),
