@@ -32,7 +32,7 @@ class Deque:
     def add_first(self, obj):
         '''enqueue obj to the front '''
         if self.is_empty():
-            self._front = 0
+            self._front = 0 
             self._data[self._front] = obj
             self._tail = 1
         else:

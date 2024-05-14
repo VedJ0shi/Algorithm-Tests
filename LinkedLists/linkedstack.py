@@ -33,31 +33,33 @@ class LinkedStack:
     
     
     def push(self, obj):
-        '''insertion at the head--linked list growing from the tail end'''
-        self._head = self._Node(obj, self._head ) #new node's _next is the existing top node
+        '''insertion at the head-- bottom of stack at tail'''
+        self._head = self._Node(obj, self._head ) #new node's _next points to the existing head node
         self._size = self._size + 1
         if self._size == 1:
             self._tail = self._head
     
     def pop(self):
         '''removing and returning from head'''
-        if self.is_empty:
+        if self.is_empty():
             raise Empty('Stack is empty')
         top_node = self._head
-        self._head = self._head._next #redefine to next node on linked list 
+        self._head = self._head._next #releases and replaces reference to current _head (irreversible)
         self._size = self._size - 1
+        if self._size == 0:
+            self._tail = None
         return top_node._element
 
 
     def top(self):
-        if self.is_empty:
+        if self.is_empty():
             raise Empty('Stack is empty')
         return self._head._element
     
 
     def __str__(self):
         try:
-            return f'Stack(last={self.top()}, first={self._tail._element}, length={self._size})'     
+            return f'Stack(top={self.top()}, bottom={self._tail._element}, length={self._size})'     
         except:
             return '<Stack()>'
         

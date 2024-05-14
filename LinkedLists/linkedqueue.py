@@ -39,17 +39,26 @@ class LinkedQueue:
             self._head = self._tail
 
     def dequeue(self):
-        if self.is_empty:
+        if self.is_empty():
             raise Empty('Queue is empty')
         first_node = self._head
-        self._head = self._head._next
+        self._head = self._head._next #releases and replaces reference to current _head (irreversible)
         self._size = self._size - 1
         if self._size == 0:
             self._tail = None
         return first_node._element
         
     def first(self):
-        if self.is_empty:
+        if self.is_empty():
             raise Empty('Queue is empty')
         return self._head._element
     
+    get = dequeue
+    put = enqueue
+
+    def __str__(self):
+        try:
+            return f'Queue(first={self.first()}, last={self._tail._element}, length={self._size})'     
+        except:
+            return '<Queue()>'
+        
