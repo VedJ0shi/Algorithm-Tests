@@ -1,14 +1,14 @@
 #the obj instatiation process calls __new__() and __init__() special methods
 
-'''__new__() should return a new empty object which is referred to by 'self' (1st arg)
-in __init__() and the rest of the class's instance methods'''
+'''__new__() should return a new empty object in memory which is referred to by 
+'self' (1st arg) in __init__() and the rest of the class's instance methods'''
 
 '''__init__() should not return anything (return None)'''
 
 class Rectangle:
     def __new__(cls, *args, **kwargs):
         print('creating new instance of Rectangle class')
-        return super().__new__(cls) #returns empty object as 1st arg to __init__()
+        return super().__new__(cls) #returns empty object of class Rectangle as 1st arg to __init__()
 
     def __init__(self, l, w):
         print('initialzing state of the Rectangle instance')
@@ -43,25 +43,26 @@ class Unit(Rectangle):
         self.length = 0
         self.width = 0
 
+
 class Singleton(Rectangle): #implements singleton design pattern
     #thus, all instances of the Singleton are actually references to the same object (synchronizes across instances)
-    _instance = None
+    _instance = None #stores singleton object
     def __new__(cls, *args, **kwargs): #override __new__() 
         if not cls._instance:
             print('creating singleton instance of Rectangle class')
             cls._instance = super().__new__(cls)
-        return cls._instance #returns the object if it already exists
+        return cls._instance #returns the cached object
 
 
 class Cached(Rectangle): #emulates caching by tracking object ids
-    _loaded = {} #cache created at runtime
+    _loaded = {} 
     def __new__(cls, id, *args, **kwargs):
         if cls._loaded.get(id, None) == None:
             print(f'creating new instance of Rectangle class with id {id}')
             cls._loaded[id] = super().__new__(cls)
         else:
             print(f'pulling instance with id {id} from cache')
-        return cls._loaded[id]
+        return cls._loaded[id] #returns the cached object identified by 'id'
     
-    def __init__(self, id, l, w):
+    def __init__(self, id, l, w): #'self' will necessarily be the object identified by 'id'
         super().__init__(l, w)
