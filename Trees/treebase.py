@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
-class Tree(metaclass=ABCMeta):
+class TreeBase(metaclass=ABCMeta):
 
     class _Position:
         '''abstraction that represents a node location on the tree'''
