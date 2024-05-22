@@ -32,6 +32,8 @@ class LinkedBinaryTree(BinaryTreeBase):
         return pos._node #unwraps
     
     def _make_position(self, node):
+            if node is None:
+                return None
             print(f'returning position of element={node._element}...')
             return self._Position(self, node) #wraps
     
