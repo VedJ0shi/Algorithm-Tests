@@ -69,7 +69,7 @@ class LinkedBinaryTree(BinaryTreeBase):
             count = count - 1
         return count
     
-    #------------------private update/mutate methods for subclass public methods---------------#
+    #------------------private update/mutate methods for any public methods of subclasses---------------#
     def _add_root(self, obj):
         if not self._root is None:
             raise ValueError('root already exists for this tree')

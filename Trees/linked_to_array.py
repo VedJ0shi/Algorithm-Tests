@@ -1,4 +1,4 @@
-#function that produces an array-based tree from a given linked-base tree (array-based sheme on p.325 )
+#function that produces an array-based tree from a given linked-base tree (array-based scheme on p.325 )
 from linkedbinarytree import LinkedBinaryTree
 
 def linked_to_array(tree): #expects a non-empty instance of LinkedBinaryTree
@@ -26,6 +26,7 @@ def linked_to_array(tree): #expects a non-empty instance of LinkedBinaryTree
             
     _build_array() 
     return arr 
+
 
 
 '''Memory: final length of arr is 1+max value of the 'j' arg across all 
