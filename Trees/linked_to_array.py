@@ -1,4 +1,4 @@
-#function that produces an array-based tree from a given linked-base tree (array-based scheme on p.325 )
+#function that produces an array-based tree from a given linked-based tree (array-based scheme on p.325 )
 from linkedbinarytree import LinkedBinaryTree
 
 def linked_to_array(tree): #expects a non-empty instance of LinkedBinaryTree
@@ -9,6 +9,7 @@ def linked_to_array(tree): #expects a non-empty instance of LinkedBinaryTree
     arr[0] = root_pos.element()
 
     def _build_array(pos=root_pos, j=0):
+        nonlocal arr
         if tree.num_children(pos) > 0:
             if 2*j + 2 > len(arr) - 1: #will first run along the rightmost branch of execution
                 increase = (2*j + 2) - (len(arr) - 1)

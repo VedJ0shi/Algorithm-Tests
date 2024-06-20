@@ -1,4 +1,49 @@
-from doublylinkedbase import *
+class Empty(Exception):
+    '''raised when accessing element from empty object'''
+    pass
+
+#----------------------------------------------------#
+
+class DoublyLinkedBase:
+    '''a base class for adapting doubly-linked lists for higher level structures'''
+
+    class _Node:
+        def __init__(self, obj, prev, next):
+            self._element = obj
+            self._prev = prev
+            self._next = next
+            
+        
+    def __init__(self):
+        self._trailer = self._Node(None, None, None)
+        self._header = self._Node(None, None, self._trailer) #_header and _trailer nodes do not contain primary data
+        self._trailer._prev = self._header
+        self._size = 0
+
+    def __len__(self):
+        return self._size
+    
+    def _insert(self, obj, predecessor, successor): #cannot do a positional insert (no concept of index)
+        '''inserts new node (containing provided data) in between the two nodes'''
+        inserted = self._Node(obj, predecessor, successor)
+        predecessor._next = inserted #prior to this, predecessor._next = successor
+        successor._prev = inserted
+        self._size = self._size + 1
+        return inserted
+
+    def _delete_node(self, node):
+        '''removes selected node and returns its stored data'''
+        obj = node._element
+        predecessor = node._prev
+        successor = node._next
+        node._element = None #dereferences original data for garbage collection
+        node._next = None #formal convention for deprecated node
+        predecessor._next = successor
+        successor._prev = predecessor #bypassing selected node
+        self._size = self._size - 1
+        return obj
+#-------------------------------------------------------#
+
 
 class PositionalList(DoublyLinkedBase):
     '''sequential container of elements allowing positional access'''
@@ -22,8 +67,6 @@ class PositionalList(DoublyLinkedBase):
         def __ne__(self, other) -> bool:
             return not self._node is other._node
 
-
-    #-------------------------------private utility methods -----------------------------#
         
     def _validate(self, pos):
         '''return underlying node; raise Exceptions if invalid'''
@@ -42,8 +85,6 @@ class PositionalList(DoublyLinkedBase):
             return None
         else: 
             return self._Position(self, node) #constructs new _Position instance contained inside the current Positional List
-        
-    #-----------------------------------------------------------------------------#
 
     
     def first(self):
@@ -102,6 +143,3 @@ class PositionalList(DoublyLinkedBase):
         '''replace data of the node at given position with new data'''
         node = self._validate(pos)
         node._element = obj
-        
-
-        

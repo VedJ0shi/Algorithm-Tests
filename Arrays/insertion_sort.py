@@ -14,3 +14,4 @@ def insertion_sort(seq):
 
 '''in worst case (seq originally in descending order), inner loop is entered in every outer iteration
 -- worst case runtime is in O(0 + 1 + 2 + ... + n) = O(n^2) '''
+ 

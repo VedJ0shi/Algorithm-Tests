@@ -6,7 +6,7 @@
 #pop() will be a removal from the head
 
 class Empty(Exception):
-    '''raised when accessing element from empty stack'''
+    '''raised when accessing element from empty object'''
     pass
 
 class LinkedStack:

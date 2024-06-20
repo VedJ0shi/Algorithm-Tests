@@ -1,4 +1,4 @@
-#more robust and faster (but slightly more memory) Linked List structure
+#more robust and faster (but more memory) Linked List structure
 
 class DoublyLinkedBase:
     '''a base class for adapting doubly-linked lists for higher level structures'''
