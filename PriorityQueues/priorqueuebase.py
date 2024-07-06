@@ -11,7 +11,9 @@ class PriorityQueueBase:
         
         def __lt__(self, other):
             return self._key < other._key
-
+        
+        def element(self):
+            return self._value
         
 
         

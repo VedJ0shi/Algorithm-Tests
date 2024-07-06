@@ -23,7 +23,7 @@ class DoublyLinkedBase:
     def __len__(self):
         return self._size
     
-    def _insert(self, obj, predecessor, successor): #cannot do a positional insert (no concept of index)
+    def _insert(self, obj, predecessor, successor): #cannot do a positional insert, only relative (no concept of index)
         '''inserts new node (containing provided data) in between the two nodes'''
         inserted = self._Node(obj, predecessor, successor)
         predecessor._next = inserted #prior to this, predecessor._next = successor
