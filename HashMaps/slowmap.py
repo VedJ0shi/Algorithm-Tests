@@ -16,14 +16,11 @@ class SlowMap(MapBase):
         raise KeyError('Key not found')
     
     def __setitem__(self, k, obj):
-        updated = False
         for item in self._map:
             if item._key == k:
                 item._value = obj
-                updated = True 
-                break
-        if not updated:
-            self._map.append(self._Item(k,obj))
+                return 
+        self._map.append(self._Item(k,obj))
 
     def __delitem__(self, k):
         for j in range(len(self._map)):
